@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const userRouter = require('./Routes/User');
+const userRouter = require('./server/routes/User');
 const passport = require('passport');
 
 app.use(cookieParser());
