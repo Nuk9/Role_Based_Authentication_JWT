@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import React, { createContext, useState, useEffect } from 'react';
 import AuthService from '../Services/AuthService';
 
@@ -11,7 +10,6 @@ export default ({ children }) => {
 
   useEffect(() => {
     AuthService.isAuthenticated().then(data => {
-      console.log(data);
       setUser(data.user);
       setIsAuthenticated(data.isAuthenticated);
       setIsLoaded(true);

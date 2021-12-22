@@ -2,10 +2,10 @@ const express = require('express');
 const userRouter = express.Router();
 const passport = require('passport');
 const passportConfig = require('../passport');
+const JWT = require('jsonwebtoken');
 const User = require('../models/User');
 const Todo = require('../models/Todo');
-const JWT = require('jsonwebtoken');
-const { compareSync } = require('bcrypt');
+
 
 const signToken = userID => {
   return JWT.sign({
@@ -24,10 +24,8 @@ userRouter.post('/register', (req, res) => {
     else {
       const newUser = new User({ username, password, role });
       newUser.save(err => {
-        if (err){
-          console.log(err);
-          res.status(500).json({ message: { msgBody: "Error has occured....!!!!!", msgError: true } });
-        }
+        if (err)
+          res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
         else
           res.status(201).json({ message: { msgBody: "Account successfully created", msgError: false } });
       });
@@ -89,5 +87,8 @@ userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }
   res.status(200).json({ isAuthenticated: true, user: { username, role } });
 });
 
-module.exports = userRouter;
 
+
+
+
+module.exports = userRouter;

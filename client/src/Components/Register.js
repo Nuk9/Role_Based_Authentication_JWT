@@ -24,7 +24,6 @@ const Register = props => {
   const onSubmit = e => {
     e.preventDefault();
     AuthService.register(user).then(data => {
-      console.log("Message...!!!", data);
       const { message } = data;
       setMessage(message);
       resetForm();
@@ -35,8 +34,6 @@ const Register = props => {
       }
     });
   }
-
-
 
   return (
     <div>
