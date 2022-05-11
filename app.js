@@ -6,7 +6,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 // mongoDB connection 
-const CONNECTION_URL = 'mongodb+srv://pardeep_mern_stack:5ZKd5aiyv3MXEHWy@cluster0.n66oq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+// add your connection_url in env file, it is disclosing database password. So add it in env file and use that variable.
+const CONNECTION_URL = process.env.URL 
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, {
